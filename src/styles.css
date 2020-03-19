@@ -1,0 +1,95 @@
+#html_main{
+    background-color: #89C3FF;
+    font-family: 'Ravi Prakash', cursive;
+}
+
+*.container {
+    margin: auto auto;
+    text-align: center;
+    width: 100%;
+    height: 1000px;
+}
+
+.form_div{
+    float: right;
+    width: 65%;
+}
+
+.resultTable{
+    float: left;
+}
+
+#main_photo_div{
+    background: #ACACDC;
+    float: left;
+    width: 30%;
+    height: 80%;
+    border: 2px solid black
+}
+
+#main_home_div{
+    width: 90%;
+    margin: 0 auto;
+    background-color: #AFFF7F;
+    padding: 0 2% 2% 2%;
+}
+
+#header_home_div{
+    background-color: #AFFF7F;
+    width: 100%;
+    height: 36%;
+}
+
+#header_div{
+    background-color: #AFFF7F;
+    width: 100%;
+    height: 10%;
+}
+
+#main_body{
+    background-color: #89C3FF;
+    font-family: 'Ravi Prakash', cursive;
+}
+
+#content {
+    background: #AFFF7F;
+    width: 100%;
+    height: 90%;
+    position: relative;
+    top: 2%;
+}
+
+*.auto-margin{
+    margin: auto;
+}
+
+.order-table{
+    border-collapse:collapse;
+}
+
+.order-table-header{
+    text-align:center;
+    background:none repeat scroll 0 0 #E5E5E5;
+    border-bottom:1px solid #BBBBBB;
+    padding:16px;
+}
+
+#clock {
+    letter-spacing: 7px;
+}
+
+.order-table-odd-row{
+    text-align:center;
+    background:none repeat scroll 0 0 #F9F9F9;
+    border-top:1px solid #BBBBBB;
+}
+
+.order-table-even-row{
+    text-align:center;
+    background:none repeat scroll 0 0 #F9F9F9;
+    border-top:1px solid #BBBBBB;
+}
+
+.center{
+    text-align: center;
+}
