@@ -8,15 +8,13 @@ class TableRow extends React.Component{
     }
     render() {
         return (
-            <tbody>
             <tr>
                 <td>{this.props.point.id}</td>
                 <td>{this.props.point.x}</td>
                 <td>{this.props.point.y}</td>
                 <td>{this.props.point.r}</td>
-                <td>{this.props.point.hit}</td>
+                <td>{this.props.point.result ? 'Попал' : 'Мимо'}</td>
             </tr>
-            </tbody>
         );
     }
 }

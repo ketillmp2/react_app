@@ -1,5 +1,23 @@
 import React from "react";
 import "../styles.css";
+import { connect } from 'react-redux';
+import agent from "../agent";
+import {POINT_ADDED, POINTS_RECALCULATED} from "../actionTypes";
+
+const mapStateToProps = state => ({
+    points: state.points.points_r,
+    rc: state.points.rc,
+    current_r: state.points.current_r
+});
+
+const mapDispatchToProps = dispatch => ({
+    recalculatedPoints: (r) => {
+        dispatch({ type: POINTS_RECALCULATED, payload: agent.Points.recalculated(r), r})
+    },
+    onCanvasClick: (x, y, r) => {
+        dispatch({ type: POINT_ADDED, payload: agent.Points.new(x, y, r), r})
+    }
+});
 
 class Graph extends React.Component {
     constructor(props) {
@@ -10,14 +28,26 @@ class Graph extends React.Component {
             missColor: "#FF0000"
         };
         this.setColor = this.setColor.bind(this);
+        this.addPointFromCanvas = this.addPointFromCanvas.bind(this);
+    }
+
+    componentWillMount() {
+        this.props.recalculatedPoints(1);
     }
 
     componentDidMount() {
-        drawGraph(this.props.radius);
+        drawGraph(1);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        drawGraph(this.props.radius);
+    componentWillReceiveProps(nextProps){
+        if (nextProps.rc) {
+            drawGraph(nextProps.rc);
+            if (!nextProps.current_r || nextProps.current_r !== nextProps.rc)
+                this.props.recalculatedPoints(nextProps.rc);
+        }
+        if (nextProps.points) {
+            nextProps.points.map(point => drawPoint(point.r, point.x, point.y, point.result));
+        }
     }
 
     setColor(event) {
@@ -30,13 +60,10 @@ class Graph extends React.Component {
         color = "#" + randomColor;
         oppositeColor = "#" + oppositeRandom;
         this.setState({colorValue: color, oppositeColor: oppositeColor, missColor: color});
-        drawGraph(this.props.radius);
     }
 
     mousePosition(evt) {
         let r = document.getElementById("graphRadius").value;
-        let c1 = document.getElementById("c1").value;
-        let c2 = document.getElementById("c2").value;
         let canvas = document.getElementById("canvas");
         let width = canvas.getAttribute("width");
         let height = canvas.getAttribute("height");
@@ -47,8 +74,7 @@ class Graph extends React.Component {
         console.log("Y position:" + position.y);
         console.log("X coordinate:" + xCoordinate);
         console.log("Y coordinate:" + yCoordinate);
-        //addFromGraph();
-        drawPoint(r, xCoordinate, yCoordinate, true, c1, c2);
+        this.props.onCanvasClick(xCoordinate, yCoordinate, this.props.rc || 1);
     }
 
     render() {
@@ -65,7 +91,9 @@ class Graph extends React.Component {
     }
 }
 
-function drawPoint(r, x, y, hit, c1, c2) {
+function drawPoint(r, x, y, hit) {
+    let c1 = document.getElementById("c1");
+    let c2 = document.getElementById("c2");
     let canvas = document.getElementById("canvas");
     let width = canvas.getAttribute("width");
     let height = canvas.getAttribute("height");
@@ -207,4 +235,4 @@ function drawGraph(r){
     ctx.stroke();
 }
 
-export default Graph;
+export default connect(mapStateToProps, mapDispatchToProps)(Graph);

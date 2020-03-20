@@ -136,8 +136,6 @@ img.avatar {
     to {transform: scale(1)}
 }
 
-
-/* Dom s govnom */
 .dom {
     top: 60%;
     color: white;
@@ -153,3 +151,4 @@ img.avatar {
     display: block;
     letter-spacing: 8px;
 }
+
