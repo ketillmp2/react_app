@@ -41,7 +41,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <MainHeader/>
+                <MainHeader currentUser={this.props.currentUser}/>
             </div>
         );
     }

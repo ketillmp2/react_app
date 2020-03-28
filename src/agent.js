@@ -3,7 +3,8 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = 'http://localhost:8080/api';
+//FIXME: УЕБАШИТЬ ПОРТ И ПОСТАВИТЬ /api
+const API_ROOT = 'http://localhost:22206';
 
 const responseBody = res => res.body;
 
@@ -16,7 +17,7 @@ const tokenPlugin = req => {
 
 const requests = {
     get: url =>
-        superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+        superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody).catch(err => console.log(err)),
     post: (url, body) =>
         superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
 };

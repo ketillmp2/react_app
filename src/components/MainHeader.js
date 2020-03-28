@@ -8,14 +8,12 @@ const LoggedOutView = props => {
     if (!props.currentUser) {
         return (
             <ul className="nav navbar-nav pull-xs-right">
-                <div>
-                    Доброе время суток!
-                    <li className="nav-item">
-                        <Link to="login" className="nav-link">
-                            Ворваться
-                        </Link>
-                    </li>
-                </div>
+
+                <li className="nav-item">
+                    <Link to="/log" className="nav-link">
+                        Войти в лабку
+                    </Link>
+                </li>
             </ul>
         );
     }
@@ -29,19 +27,21 @@ const LoggedInView = props => {
             <ul className="nav navbar-nav pull-xs-right">
 
                 <li className="nav-item">
-                    {props.currentUser}
+                    Давно не виделись, {props.currentUser}!
                 </li>
 
                 <li className="nav-item">
+                    <Link to="/main" className="nav-link">
+                        На главную страницу
+                    </Link>
                     <Link to="/"  onClick={props.logout} className="nav-link">
-                        Ливнуть
+                        Выйти из лабки
                     </Link>
                 </li>
 
             </ul>
         );
     }
-
     return null;
 };
 
@@ -58,13 +58,10 @@ class MainHeader extends React.Component {
             <nav className="navbar navbar-light ">
                 <div className="col-sm-5">
 
-                    <Link to="/" className="navbar-brand">
-                        {this.props.appName}
-                    </Link>
+                    <LoggedInView currentUser={this.props.currentUser} logout={this.props.onClickLogout}/>
 
                     <LoggedOutView currentUser={this.props.currentUser} />
 
-                    <LoggedInView currentUser={this.props.currentUser} logout={this.props.onClickLogout}/>
                 </div>
             </nav>
         );

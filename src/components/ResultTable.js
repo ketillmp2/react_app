@@ -2,49 +2,52 @@ import React from "react";
 import TableRow from "./TableRow";
 import "../styles.css";
 
+
 class ResultTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
 
     render() {
+
         if (this.props.currentUser) {
+            let className = "pointList container d-flex justify-content-center col-sm-4";
             if (!this.props.points) {
                 return (
-                    <div className="resultTable">
+                    <div className={className}>
                         Загрузка точек...
                     </div>
                 );
             }
             if (this.props.points.length === 0) {
                 return (
-                    <div className="resultTable">
+                    <div className={className}>
                         Тут пока пусто :c
                     </div>
                 );
             }
             return (
-                <div className="resultTable">
-                    <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <th>X</th>
-                        <th>Y</th>
-                        <th>R</th>
-                        <th>Попала?</th>
-                    </tr>
-                    </tbody>
-                    {
-                        this.props.map(point => {
-                            return (
-                                <TableRow point={point} key={point.id} r={this.props.r}/>
-                            );
-                        })
-                    }
+                <div className={className}>
+                    <table className="resultTable table table-striped table-bordered table-sm" cellSpacing="0"
+                           width="80%">
+                        <thead>
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                            <th>R</th>
+                            <th>Хит</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            this.props.points.map(point => {
+                                return (
+                                    <TableRow point={point} key={point.id} r={this.props.r}/>
+                                );
+                            })
+                        }
+                        </tbody>
+                    </table>
                 </div>
             );
-        }else{
+        } else {
             return null;
         }
     }

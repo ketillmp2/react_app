@@ -1,0 +1,17 @@
+<form onSubmit={this.submitForm(this.props.username, this.props.password)}>
+                            <div className="container2">
+                                <label htmlFor='uname'><b>Username</b></label>
+                                <input maxLength="50" type="text" value={this.props.username}
+                                       placeholder="Enter Username" name="uname" id="uname" required
+                                       onChange={this.changeUsername}/>
+                                <label htmlFor="psw"><b>Password</b></label>
+                                <input maxLength="50" type="password" value={this.props.password}
+                                       placeholder="Enter Password" name="psw" id="psw" required
+                                       onChange={this.changePassword}/>
+                                <label><input type="checkbox" onClick={showPass}/>Show password</label>
+                                <button type="submit">Login</button>
+                            </div>
+                        </form>
+
+
+

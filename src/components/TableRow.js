@@ -9,11 +9,10 @@ class TableRow extends React.Component{
     render() {
         return (
             <tr>
-                <td>{this.props.point.id}</td>
                 <td>{this.props.point.x}</td>
                 <td>{this.props.point.y}</td>
                 <td>{this.props.point.r}</td>
-                <td>{this.props.point.result ? 'Попал' : 'Мимо'}</td>
+                <td>{this.props.point.hit ? 'Хит' : 'Мисс'}</td>
             </tr>
         );
     }

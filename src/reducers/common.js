@@ -26,7 +26,7 @@ export default (state = defaultState, action) => {
         case LOGIN:
             return {
                 ...state,
-                redirectTo: action.error ? null : '/',
+                redirectTo: action.error ? '/' : '/main',
                 currentUser: action.error ? null : action.username
             };
         default:

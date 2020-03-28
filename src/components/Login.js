@@ -14,8 +14,9 @@ const mapDispatchToProps = dispatch => ({
         dispatch({type: UPDATE_FIELD_AUTH, key: 'username', value}),
     onChangePassword: value =>
         dispatch({type: UPDATE_FIELD_AUTH, key: 'password', value}),
-    onSubmit: (username, password) =>
-        dispatch({type: LOGIN, payload: agent.Auth.login(username, password), username})
+    onSubmit: (username, password) => {
+        dispatch({type: LOGIN, payload: agent.Auth.login(username, password), username: username})
+    }
 });
 
 class Login extends React.Component {
@@ -37,13 +38,18 @@ class Login extends React.Component {
                     <span onClick={hideDisplay} className="close" title="Close Modal">&times;</span>
                     <div className="modal-content animate">
                         <form onSubmit={this.submitForm(this.props.username, this.props.password)}>
-                            <div className="container">
+                            <div className="container2">
+
                                 <label htmlFor='uname'><b>Username</b></label>
                                 <input maxLength="50" type="text" value={this.props.username}
-                                       placeholder="Enter Username" name="uname" id="uname" required/>
+                                       placeholder="Enter Username" name="uname" id="uname" required
+                                       onChange={this.changeUsername}/>
+
                                 <label htmlFor="psw"><b>Password</b></label>
                                 <input maxLength="50" type="password" value={this.props.password}
-                                       placeholder="Enter Password" name="psw" id="psw" required/>
+                                       placeholder="Enter Password" name="psw" id="psw" required
+                                       onChange={this.changePassword}/>
+
                                 <label><input type="checkbox" onClick={showPass}/>Show password</label>
                                 <button type="submit">Login</button>
                             </div>

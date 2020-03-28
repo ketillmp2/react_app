@@ -1,4 +1,5 @@
 import agent from './agent';
+import Cookies from 'js-cookie';
 import {
     POINT_ADDED,
     POINTS_LOADED,
@@ -59,15 +60,14 @@ const pointsMiddleware = store => next => action => {
     next(action);
 };
 
-
 const authMiddleware = store => next => action => {
 
     switch (action.type) {
         case LOGIN:
             if (!action.error) {
-                window.localStorage.setItem('token', action.payload.message);
+                window.localStorage.setItem('token', Cookies.get('JSESSIONID'));
                 window.localStorage.setItem('username', action.username);
-                agent.setToken(action.payload.message);
+                agent.setToken(Cookies.get('JSESSIONID'));
             }
             break;
         case LOGOUT:

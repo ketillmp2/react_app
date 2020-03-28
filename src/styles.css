@@ -1,53 +1,139 @@
-#html_main{
+#html_main {
     background-color: #89C3FF;
     font-family: 'Ravi Prakash', cursive;
 }
 
-*.container {
+*.container4 {
     margin: auto auto;
     text-align: center;
     width: 100%;
     height: 1000px;
 }
 
-.form_div{
-    float: right;
-    width: 65%;
+@media (min-width: 1107px){
+    body{
+        font-size: 18px;
+    }
+    #canvas {
+        width: 300px;
+        height: 300px;
+    }
+    #main_photo_div {
+        background: #ACACDC;
+        float: left;
+        width: 30%;
+        height: 30%;
+        border: 2px solid black
+    }
+    .form_div {
+        float: right;
+        width: 65%;
+    }
+    .resultTable {
+        max-height: 600px;
+        overflow: auto;
+        display: inline-block;
+    }
 }
 
-.resultTable{
-    float: left;
-    width: 100%;
+@media (min-width: 500px) and (max-width: 705px){
+    body{
+        font-size: 14px;
+    }
+    .resultTable {
+        max-height: 400px;
+        overflow: auto;
+        display: inline-block;
+    }
+    #canvas {
+        width: 300px;
+        height: 300px;
+    }
+    #main_photo_div {
+        background: #ACACDC;
+        float: top;
+        width: 100%;
+        height: 320px;
+        border: 2px solid black
+    }
+    .form_div {
+        float: top;
+        width: 100%;
+    }
 }
 
-#main_photo_div{
-    background: #ACACDC;
-    float: left;
-    width: 30%;
-    height: 80%;
-    border: 2px solid black
+@media (min-width: 705px) and (max-width: 1106px){
+    body{
+        font-size: 16px;
+    }
+    .resultTable {
+        max-height: 500px;
+        overflow: auto;
+        display: inline-block;
+    }
+    #canvas {
+        width: 300px;
+        height: 300px;
+    }
+    #main_photo_div {
+        background: #ACACDC;
+        float: top;
+        width: 100%;
+        height: 320px;
+        border: 2px solid black
+    }
+    .form_div {
+        float: top;
+        width: 100%;
+    }
 }
 
-#main_home_div{
+@media (max-width: 500px){
+    body{
+        font-size: 13px;
+    }
+    .resultTable {
+        max-height: 300px;
+        overflow: auto;
+        display: inline-block;
+    }
+    #canvas {
+        width: 300px;
+        height: 300px;
+    }
+    #main_photo_div {
+        background: #ACACDC;
+        float: top;
+        width: 100%;
+        height: 400px;
+        border: 2px solid black
+    }
+    .form_div {
+        float: top;
+        width: 100%;
+    }
+}
+
+#main_home_div {
     width: 90%;
     margin: 0 auto;
     background-color: #AFFF7F;
     padding: 0 2% 2% 2%;
 }
 
-#header_home_div{
+#header_home_div {
     background-color: #AFFF7F;
     width: 100%;
-    height: 36%;
+    height: 20%;
 }
 
-#header_div{
+#header_div {
     background-color: #AFFF7F;
     width: 100%;
     height: 10%;
 }
 
-#main_body{
+#main_body {
     background-color: #89C3FF;
     font-family: 'Ravi Prakash', cursive;
 }
@@ -55,42 +141,15 @@
 #content {
     background: #AFFF7F;
     width: 100%;
-    height: 90%;
+    height: 95%;
     position: relative;
     top: 2%;
 }
 
-*.auto-margin{
+*.auto-margin {
     margin: auto;
 }
 
-.order-table{
-    border-collapse:collapse;
-}
-
-.order-table-header{
-    text-align:center;
-    background:none repeat scroll 0 0 #E5E5E5;
-    border-bottom:1px solid #BBBBBB;
-    padding:16px;
-}
-
-#clock {
-    letter-spacing: 7px;
-}
-
-.order-table-odd-row{
-    text-align:center;
-    background:none repeat scroll 0 0 #F9F9F9;
-    border-top:1px solid #BBBBBB;
-}
-
-.order-table-even-row{
-    text-align:center;
-    background:none repeat scroll 0 0 #F9F9F9;
-    border-top:1px solid #BBBBBB;
-}
-
-.center{
+.center {
     text-align: center;
 }
